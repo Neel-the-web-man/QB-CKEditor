@@ -1,4 +1,4 @@
-module github.com/Neel-the-web-man/QB-CKEditor
+module github.com/Neel-the-web-man/QB-CKEditor/Backend
 
 go 1.25.1
 
