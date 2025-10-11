@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/Neel-the-web-man/QB-CKEditor/Backend/db"
-	"github.com/Neel-the-web-man/QB-CKEditor/Backend/handlers"
+	"github.com/Neel-the-web-man/QB-CKEditor/Backend/helpers"
 )
 
 type APIConfig struct {
