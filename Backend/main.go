@@ -12,6 +12,7 @@ import (
 	_ "github.com/lib/pq"
 	"github.com/Neel-the-web-man/QB-CKEditor/Backend/routes"
 	"github.com/Neel-the-web-man/QB-CKEditor/Backend/db"
+	"github.com/Neel-the-web-man/QB-CKEditor/Backend/controllers"
 )
 
 func main() {
@@ -25,6 +26,17 @@ func main() {
 	if portSTRING==""{
 		log.Fatal("PORT environment variable not set");
 	}
+
+
+	// Connect to the database
+	conn:=db.ConnectDB()
+
+	// Initialize sqlc store (typed queries)
+	apiCfg := controllers.APIConfig{
+		DB: db.New(conn), // sqlc-generated store
+	}
+
+	
 	// Creating the main router
 	r := chi.NewRouter()
 
@@ -35,7 +47,7 @@ func main() {
 	// Define routes
 	v1r := chi.NewRouter()
 
-	routes.RegisterQuestionRoutes(v1r)
+	routes.RegisterQuestionRoutes(v1r,apiCfg)
 
 	// Mount the versioned router
 	r.Mount("/api/v1", v1r)
