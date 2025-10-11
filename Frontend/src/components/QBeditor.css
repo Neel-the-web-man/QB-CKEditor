@@ -1,0 +1,69 @@
+.qb-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.qb-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.editor-section {
+  margin-bottom: 1.5rem;
+}
+
+.editor-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #555;
+}
+
+.options-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.correct-section {
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 500;
+}
+
+.correct-section select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.qb-btn {
+  margin-top: 1rem;
+  background-color: #1e1e1e;
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  display: block;
+  margin-left: auto;
+}
+
+.qb-btn:hover {
+  background-color: #333;
+}
+
+@media (max-width: 768px) {
+  .options-section {
+    grid-template-columns: 1fr;
+  }
+}
