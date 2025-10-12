@@ -16,10 +16,10 @@ func (c *APIConfig) GetAllQuestions(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	questions, err := c.DB.GetAllQuestions(ctx)
 	if err != nil {
-		respondWithError(w, 500, "Failed to fetch questions")
+		helpers.RespondWithError(w, 500, "Failed to fetch questions")
 		return
 	}
-	respondWithJSON(w, 200, questions)
+	helpers.RespondWithJSON(w, 200, questions)
 }
 
 // CreateQuestion handles POST /questions
