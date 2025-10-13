@@ -8,6 +8,15 @@ import (
 	"database/sql"
 )
 
+type Option struct {
+	ID          int32
+	QuestionID  int32
+	OptionText  string
+	OptionIndex int16
+	IsCorrect   bool
+	CreatedAt   sql.NullTime
+}
+
 type Question struct {
 	ID           int32
 	QuestionText string

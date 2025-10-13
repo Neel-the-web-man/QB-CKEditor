@@ -9,6 +9,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/joho/godotenv"
+	"github.com/go-chi/cors"
 	_ "github.com/lib/pq"
 	"github.com/Neel-the-web-man/QB-CKEditor/Backend/routes"
 	"github.com/Neel-the-web-man/QB-CKEditor/Backend/db"
@@ -27,7 +28,6 @@ func main() {
 		log.Fatal("PORT environment variable not set");
 	}
 
-
 	// Connect to the database
 	conn:=db.ConnectDB()
 
@@ -44,6 +44,16 @@ func main() {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 
+	r.Use(cors.Handler(cors.Options{
+		AllowedOrigins:   []string{"https://*", "http://*"}, // allow all origins (adjust in production)
+		AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		ExposedHeaders:   []string{"Link"},
+		AllowCredentials: true,
+		MaxAge:           300, // Maximum value not ignored by any major browsers
+	}))
+
+
 	// Define routes
 	v1r := chi.NewRouter()
 
@@ -51,7 +61,7 @@ func main() {
 
 	// Mount the versioned router
 	r.Mount("/api/v1", v1r)
-	// Configuring the HTTP server
+	// Configuring the HTTP server	
 	srv := &http.Server{
 		Handler: r,
 		Addr:    ":" + portSTRING,

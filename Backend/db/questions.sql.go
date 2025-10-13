@@ -7,7 +7,36 @@ package db
 
 import (
 	"context"
+	"database/sql"
 )
+
+const createQuestion = `-- name: CreateQuestion :one
+INSERT INTO questions (question_text, created_at)
+VALUES ($1, $2)
+RETURNING id, question_text, created_at
+`
+
+type CreateQuestionParams struct {
+	QuestionText string
+	CreatedAt    sql.NullTime
+}
+
+func (q *Queries) CreateQuestion(ctx context.Context, arg CreateQuestionParams) (Question, error) {
+	row := q.db.QueryRowContext(ctx, createQuestion, arg.QuestionText, arg.CreatedAt)
+	var i Question
+	err := row.Scan(&i.ID, &i.QuestionText, &i.CreatedAt)
+	return i, err
+}
+
+const deleteQuestion = `-- name: DeleteQuestion :exec
+DELETE FROM questions
+WHERE id=$1
+`
+
+func (q *Queries) DeleteQuestion(ctx context.Context, id int32) error {
+	_, err := q.db.ExecContext(ctx, deleteQuestion, id)
+	return err
+}
 
 const getAllQuestions = `-- name: GetAllQuestions :many
 SELECT id, question_text, created_at FROM questions
@@ -34,4 +63,23 @@ func (q *Queries) GetAllQuestions(ctx context.Context) ([]Question, error) {
 		return nil, err
 	}
 	return items, nil
+}
+
+const updateQuestion = `-- name: UpdateQuestion :one
+UPDATE questions
+SET question_text = $2
+WHERE id = $1
+RETURNING id, question_text, created_at
+`
+
+type UpdateQuestionParams struct {
+	ID           int32
+	QuestionText string
+}
+
+func (q *Queries) UpdateQuestion(ctx context.Context, arg UpdateQuestionParams) (Question, error) {
+	row := q.db.QueryRowContext(ctx, updateQuestion, arg.ID, arg.QuestionText)
+	var i Question
+	err := row.Scan(&i.ID, &i.QuestionText, &i.CreatedAt)
+	return i, err
 }
