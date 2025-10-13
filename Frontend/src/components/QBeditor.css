@@ -1,69 +1,76 @@
-.qb-container {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-.qb-heading {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #333;
-}
-
-.editor-section {
-  margin-bottom: 1.5rem;
-}
-
-.editor-label {
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  display: block;
-  color: #555;
-}
-
-.options-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.correct-section {
-  margin: 1.5rem 0;
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
   display: flex;
+  justify-content: center;
   align-items: center;
+  z-index: 9999;
+}
+
+/* Modal content */
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* Checkbox styling */
+.correct-checkbox {
+  margin-top: 0.5rem;
+}
+
+/* Modal buttons */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
   gap: 1rem;
-  font-weight: 500;
-}
-
-.correct-section select {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.qb-btn {
   margin-top: 1rem;
-  background-color: #1e1e1e;
+}
+
+.modal-actions .cancel {
+  background-color: #888;
+}
+
+.modal-actions .cancel:hover {
+  background-color: #555;
+}
+
+.qb-btn.add-question {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: white;
+  font-weight: 600;
+  font-size: 1rem;
   padding: 0.8rem 2rem;
   border: none;
+  border-radius: 12px;
   cursor: pointer;
-  border-radius: 8px;
-  display: block;
-  margin-left: auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
 }
 
-.qb-btn:hover {
-  background-color: #333;
+.qb-btn.add-question:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 768px) {
-  .options-section {
-    grid-template-columns: 1fr;
-  }
+.qb-btn.add-question:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.qbeditor-cont{
+  display: flex;
+  margin: 5px;
 }

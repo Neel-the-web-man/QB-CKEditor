@@ -1,0 +1,130 @@
+.qb-comp-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.qb-comp-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 1rem 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.qb-comp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.qb-comp-card-actions button {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.qb-comp-edit {
+  background-color: #1e90ff;
+  color: white;
+}
+
+.qb-comp-edit:hover {
+  background-color: #187bcd;
+}
+
+.qb-comp-delete {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.qb-comp-delete:hover {
+  background-color: #cc3b3f;
+}
+
+.qb-comp-question {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.qb-comp-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.qb-comp-option {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  color: #555;
+}
+
+.qb-comp-no-questions,
+.qb-comp-loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 2rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex; justify-content: center; align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  width: 80%;
+  max-width: 700px;
+  position: relative;
+  border-radius: 8px;
+}
+
+/* Position the X close button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #444;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+
+.modal-option-item {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-submit-btn {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
